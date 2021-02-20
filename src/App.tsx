@@ -1,11 +1,12 @@
-import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import React, { useState } from "react";
 
-import { PlayerForm } from "./components/PlayerForm";
+import PlayerForm from "./components/PlayerForm";
+import PlayerList from "./components/PlayerList";
 
 type Player = {
   name: string;
+  color: string;
 };
 
 function App() {
@@ -16,17 +17,12 @@ function App() {
   };
 
   return (
-    <Container maxWidth="sm">
-      <ul>
-        {players.map((player) => (
-          <li key={player.name}>{player.name}</li>
-        ))}
-      </ul>
-
-      <Box clone>
+    <>
+      <Container maxWidth="sm">
+        <PlayerList players={players} />
         <PlayerForm addPlayer={addPlayer} />
-      </Box>
-    </Container>
+      </Container>
+    </>
   );
 }
 

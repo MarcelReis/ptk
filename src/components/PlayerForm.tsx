@@ -2,22 +2,27 @@ import React, { useState } from "react";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import { getRandomColor } from "../libs/randomColor";
 
 type Player = {
   name: string;
+  color: string;
 };
 
 type PropsType = {
   addPlayer: (player: Player) => void;
 };
 
-export const PlayerForm = (props: PropsType) => {
-  const [player, setPlayer] = useState<Player>({ name: "" });
+function PlayerForm(props: PropsType) {
+  const [player, setPlayer] = useState<Player>({
+    name: "",
+    color: getRandomColor(),
+  });
 
   const submit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     props.addPlayer(player);
-    setPlayer({ name: "" });
+    setPlayer({ name: "", color: getRandomColor() });
   };
 
   return (
@@ -40,4 +45,6 @@ export const PlayerForm = (props: PropsType) => {
       </Box>
     </form>
   );
-};
+}
+
+export default PlayerForm;
