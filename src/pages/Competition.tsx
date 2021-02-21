@@ -14,6 +14,7 @@ import Box from "@material-ui/core/Box";
 import Divider from "@material-ui/core/Divider";
 
 import { ContestState } from "../App";
+import { getRandomColor } from "../libs/randomColor";
 
 type PropsType = {
   contest: ContestState;
@@ -45,26 +46,22 @@ function Competition(props: PropsType) {
 
             <Divider />
 
-            <ListItem key={player2.name ?? index}>
-              {player2 ? (
-                <>
-                  <ListItemAvatar>
-                    <Avatar style={{ backgroundColor: player2.color }}>
-                      <FaceIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText primary={player2.name} />
-                  <ListItemSecondaryAction>
-                    <IconButton
-                      edge="end"
-                      aria-label="delete"
-                      onClick={() => null}
-                    >
-                      <SwapIcon />
-                    </IconButton>
-                  </ListItemSecondaryAction>
-                </>
-              ) : null}
+            <ListItem key={player2?.name ?? index}>
+              <ListItemAvatar>
+                <Avatar
+                  style={{
+                    backgroundColor: player2?.color ?? getRandomColor(),
+                  }}
+                >
+                  <FaceIcon />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary={player2?.name ?? "[VAGA]"} />
+              <ListItemSecondaryAction>
+                <IconButton edge="end" aria-label="delete" onClick={() => null}>
+                  <SwapIcon />
+                </IconButton>
+              </ListItemSecondaryAction>
             </ListItem>
           </List>
         </Box>
