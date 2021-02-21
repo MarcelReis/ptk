@@ -10,7 +10,6 @@ import shuffle from "./libs/shuffle";
 import Competition from "./pages/Competition";
 import CreateCompetition from "./pages/CreateCompetition";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 
 export type Player = {
   name: string;
