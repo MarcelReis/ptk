@@ -16,6 +16,7 @@ type Player = {
 
 type PropsType = {
   players: Player[];
+  removePlayer: (playerName: string) => void;
 };
 
 function PlayerList(props: PropsType) {
@@ -30,7 +31,11 @@ function PlayerList(props: PropsType) {
           </ListItemAvatar>
           <ListItemText primary={player.name} />
           <ListItemSecondaryAction>
-            <IconButton edge="end" aria-label="delete">
+            <IconButton
+              edge="end"
+              aria-label="delete"
+              onClick={() => props.removePlayer(player.name)}
+            >
               <DeleteIcon />
             </IconButton>
           </ListItemSecondaryAction>

@@ -16,10 +16,16 @@ function App() {
     setPlayers((players) => [...players, player]);
   };
 
+  const removePlayer = (playerName: string) => {
+    setPlayers((players) =>
+      players.filter((player) => player.name !== playerName)
+    );
+  };
+
   return (
     <>
       <Container maxWidth="sm">
-        <PlayerList players={players} />
+        <PlayerList players={players} removePlayer={removePlayer} />
         <PlayerForm addPlayer={addPlayer} />
       </Container>
     </>
