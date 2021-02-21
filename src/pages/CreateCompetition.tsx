@@ -1,3 +1,4 @@
+import { Box } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import React from "react";
@@ -19,14 +20,16 @@ function CreateCompetition(props: PropsType) {
       <PlayerForm addPlayer={props.addPlayer} />
       <PlayerList players={props.players} removePlayer={props.removePlayer} />
 
-      <Button
-        variant="contained"
-        color="secondary"
-        fullWidth
-        onClick={props.createContest}
-      >
-        Criar competicao
-      </Button>
+      <Box clone paddingBottom={2}>
+        <Button
+          variant="contained"
+          color="secondary"
+          fullWidth
+          onClick={props.createContest}
+        >
+          Criar competição
+        </Button>
+      </Box>
     </Container>
   );
 }
