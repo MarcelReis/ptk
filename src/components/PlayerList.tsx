@@ -8,6 +8,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import FaceIcon from "@material-ui/icons/Face";
 import React from "react";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
 
 type Player = {
   name: string;
@@ -21,27 +23,30 @@ type PropsType = {
 
 function PlayerList(props: PropsType) {
   return (
-    <List>
-      {props.players.map((player) => (
-        <ListItem key={player.name} disableGutters>
-          <ListItemAvatar>
-            <Avatar style={{ backgroundColor: player.color }}>
-              <FaceIcon />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary={player.name} />
-          <ListItemSecondaryAction>
-            <IconButton
-              edge="end"
-              aria-label="delete"
-              onClick={() => props.removePlayer(player.name)}
-            >
-              <DeleteIcon />
-            </IconButton>
-          </ListItemSecondaryAction>
-        </ListItem>
-      ))}
-    </List>
+    <Box pt={3}>
+      <Typography variant="h6">Jogadores ({props.players.length})</Typography>
+      <List>
+        {props.players.map((player) => (
+          <ListItem key={player.name} disableGutters>
+            <ListItemAvatar>
+              <Avatar style={{ backgroundColor: player.color }}>
+                <FaceIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary={player.name} />
+            <ListItemSecondaryAction>
+              <IconButton
+                edge="end"
+                aria-label="delete"
+                onClick={() => props.removePlayer(player.name)}
+              >
+                <DeleteIcon />
+              </IconButton>
+            </ListItemSecondaryAction>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
   );
 }
 
