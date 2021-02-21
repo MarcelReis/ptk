@@ -17,10 +17,14 @@ export type ContestState = {
   teams: Team[];
 };
 
+const contestInitialState: ContestState = {
+  teams: [],
+};
+
 function App() {
   const history = useHistory();
   const [players, setPlayers] = useState<Player[]>([]);
-  const [contest, setContest] = useState<ContestState>({ teams: [] });
+  const [contest, setContest] = useState(contestInitialState);
 
   const addPlayer = (player: Player) => {
     setPlayers((players) => [...players, player]);
@@ -46,7 +50,7 @@ function App() {
 
         return contest;
       },
-      { ...contest }
+      { ...contestInitialState }
     );
 
     setContest(newContest);
